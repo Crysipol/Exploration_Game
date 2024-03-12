@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
 
     // Player Health and damage
     public int playerHealth = 100;
-    public int playerDamage = 5;
+    public static int playerDamage = 5;
 
     // Jump, Dash, and stun situations
     public bool canJump = true;
@@ -22,7 +22,7 @@ public class PlayerScript : MonoBehaviour
 
     // PowerUps
     public bool slowFalling = false;
-    public bool doubleDamage = false;
+    public static bool doubleDamage = false;
     public bool healing = false;
     public bool stun = false;
 
@@ -79,12 +79,7 @@ public class PlayerScript : MonoBehaviour
 
         else if(canDash == false)
         {
-            for(int i = 0, 1)
-            {
-                Debug.Log("Dash in Cooldown");
-                canDash = true;
-            }
-
+            Debug.Log("Work In Progress");
         }
 
         //Powerups
@@ -93,10 +88,43 @@ public class PlayerScript : MonoBehaviour
             if(playerHealth <= 95)
             {
                 playerHealth += 5;
-                Debug.Log("Health: " + playerHealth)
+                Debug.Log("Health: " + playerHealth);
             }
 
         }
-
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            canJump = true;
+        }
+
+        // PowerUps
+        if(collision.gameObject.tag == "SlowfallingPower")
+        {
+            slowFalling = true;
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "DoubledamagePower")
+        {
+            doubleDamage = true;
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "HealingPower")
+        {
+            healing = true;
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "StunPower")
+        {
+            stun = true;
+            Destroy(collision.gameObject);
+        }  
+    }
+
+    
 }
