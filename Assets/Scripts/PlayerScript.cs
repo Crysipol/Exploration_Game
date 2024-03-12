@@ -11,22 +11,22 @@ public class PlayerScript : MonoBehaviour
     public Vector3 dash;
 
     // Player Health and damage
-    public int playerHealth = 100;
+    public static int playerHealth = 100;
     public static int playerDamage = 5;
 
     // Jump, Dash, and stun situations
     public bool canJump = true;
-    public bool canDoubleJump = true;
-    public bool canDash = true;
-    public bool isStunned = false;
+    private bool canDoubleJump = true;
+    private bool canDash = true;
+    private bool isStunned = false;
 
     // PowerUps
-    public bool slowFalling = false;
+    private bool slowFalling = false;
     public static bool doubleDamage = false;
-    public bool healing = false;
-    public bool stun = false;
+    private bool healing = false;
+    private bool stun = false;
 
-    public int playerFacing;
+    public static int playerFacing;
 
     void Start()
     {
