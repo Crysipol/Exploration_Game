@@ -23,12 +23,6 @@ public class ProjectileScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        if(PlayerScript.doubleDamage == true)
-        {
-            PlayerScript.playerDamage = 10;
-            PlayerScript.doubleDamage = false;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

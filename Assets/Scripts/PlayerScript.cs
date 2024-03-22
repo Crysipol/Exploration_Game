@@ -8,7 +8,6 @@ public class PlayerScript : MonoBehaviour
     public Vector3 leftMoveForce;
     public Vector3 rightMoveForce;
     public Vector3 jumpForce;
-    public Vector3 dash;
 
     // Player Health and damage
     public static int playerHealth = 100;
@@ -17,16 +16,14 @@ public class PlayerScript : MonoBehaviour
     // Jump, Dash, and stun situations
     public bool canJump = true;
     private bool canDoubleJump = true;
-    private bool canDash = true;
-    private bool isStunned = false;
-
-    // PowerUps
-    private bool slowFalling = false;
-    public static bool doubleDamage = false;
-    private bool healing = false;
-    private bool stun = false;
-
     public static int playerFacing;
+
+    public GameObject leftprojectilePrefab;
+    public GameObject rightprojectilePrefab;
+    public Vector3 leftprojectileOffset;
+    public Vector3 rightprojectileOffset;
+
+
 
     void Start()
     {
@@ -37,26 +34,21 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Checks first if the player is stunned
-        if(isStunned == true)
-        {
-            Debug.Log("Your stunned!, You cant move!");
-        }
-
-        // Player movement
         if(Input.GetKey(KeyCode.A))
         {
             GetComponent<Rigidbody2D>().AddForce(leftMoveForce);
             playerFacing = -1;
+            transform.localScale = new Vector2(0.3f,0.3f);
         }
 
         if(Input.GetKey(KeyCode.D))
         {
             GetComponent<Rigidbody2D>().AddForce(rightMoveForce);
             playerFacing = 1;
+            transform.localScale = new Vector2(-0.3f,0.3f);
         }
 
-        if(Input.GetKey(KeyCode.W))
+        if(Input.GetKey(KeyCode.Space))
         {
             if(canJump == true)
             {
@@ -71,27 +63,19 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Q) && canDash == true)
+        if(Input.GetKeyDown(KeyCode.E))
         {
-            GetComponent<Rigidbody2D>().AddForce(dash);
-            canDash = false;
-        }
-
-        else if(canDash == false)
-        {
-            Debug.Log("Work In Progress");
-        }
-
-        //Powerups
-        if(healing == true)
-        {
-            if(playerHealth <= 95)
+            if(playerFacing == 1)
             {
-                playerHealth += 5;
-                Debug.Log("Health: " + playerHealth);
+                Instantiate(rightprojectilePrefab,GetComponent<Transform>().position + leftprojectileOffset,Quaternion.identity);
             }
 
+            if(playerFacing == -1){
+                Instantiate(leftprojectilePrefab,GetComponent<Transform>().position + rightprojectileOffset,Quaternion.identity);
+            }
         }
+        
+        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -99,32 +83,5 @@ public class PlayerScript : MonoBehaviour
         {
             canJump = true;
         }
-
-        // PowerUps
-        if(collision.gameObject.tag == "SlowfallingPower")
-        {
-            slowFalling = true;
-            Destroy(collision.gameObject);
-        }
-
-        if(collision.gameObject.tag == "DoubledamagePower")
-        {
-            doubleDamage = true;
-            Destroy(collision.gameObject);
-        }
-
-        if(collision.gameObject.tag == "HealingPower")
-        {
-            healing = true;
-            Destroy(collision.gameObject);
-        }
-
-        if(collision.gameObject.tag == "StunPower")
-        {
-            stun = true;
-            Destroy(collision.gameObject);
-        }  
     }
-
-    
 }
