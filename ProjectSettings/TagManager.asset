@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Background
+  - FireBall
   layers:
   - Default
   - TransparentFX
