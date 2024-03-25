@@ -19,7 +19,7 @@ public class ProjectileScript : MonoBehaviour
     {
         GetComponent<Transform>().position += projectileMove;
         projectileTimer += Time.deltaTime;
-        if(projectileTimer > 1f)
+        if(projectileTimer > 4f)
         {
             Destroy(gameObject);
         }
@@ -29,7 +29,7 @@ public class ProjectileScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            gameManagerObject.GetComponent<GameManagerScript>().score += 1;
+            gameManagerObject.GetComponent<GameManagerScript>().points += 1;
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
