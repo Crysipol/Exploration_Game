@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3089895223966573011}
   m_Layer: 0
   m_Name: Fireball(right1)
-  m_TagString: Untagged
+  m_TagString: FireBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,4 +167,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileMove: {x: 0.007, y: 0, z: 0}
   projectileTimer: 0
-  gameManagerObject: {fileID: 0}

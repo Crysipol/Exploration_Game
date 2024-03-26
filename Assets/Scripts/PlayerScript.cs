@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     // Jump, Dash, and stun situations
     public bool canJump = true;
     private bool canDoubleJump = true;
-    public static int playerFacing;
+    public static int playerFacing = -1;
 
     public GameObject leftprojectilePrefab;
     public GameObject rightprojectilePrefab;

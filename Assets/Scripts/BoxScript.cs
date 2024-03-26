@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class BoxScript : MonoBehaviour
 {
+    public GameObject orangePowerUpPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
 
-    }
-
-    public string PowerUpspawn(){
-        string [] powerUps = {"red",  "Orange", "blue", "green"};
-        return powerUps [new System.Random().Next(powerUps.Length)];
     }
     // Update is called once per frame
     void Update()
@@ -25,6 +21,7 @@ public class BoxScript : MonoBehaviour
         if (collision.gameObject.tag == "FireBall")
         {
             Destroy(gameObject);
+            Instantiate(orangePowerUpPrefab);
         }
     }
 }
