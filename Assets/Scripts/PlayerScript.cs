@@ -10,12 +10,12 @@ public class PlayerScript : MonoBehaviour
     public Vector3 jumpForce;
 
     // Player Health and damage
-    public static int playerHealth = 100;
-    public static int playerDamage = 5;
+    public int playerHealth = 100;
+    public int playerDamage = 5;
 
     // Jump, Dash, and stun situations
     public bool canJump = true;
-    private bool canDoubleJump = true;
+    private bool canDoubleJump = false;
     public static int playerFacing = -1;
 
     public GameObject leftprojectilePrefab;
@@ -75,13 +75,25 @@ public class PlayerScript : MonoBehaviour
             }
         }
         
+        if(playerHealth == 0){
+            Destroy(gameObject);
+        }
         
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
-        {
-            canJump = true;
+        switch(collision.gameObject.tag){
+            case "Ground":
+                canJump = true;
+                break;
+
+            case "Enemy":
+                playerHealth -= 25;
+                break;
+            
+            case "powerUpOrange":
+                canDoubleJump = true;
+                break; 
         }
     }
 }
