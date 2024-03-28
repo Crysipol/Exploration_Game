@@ -16,18 +16,18 @@ public class PlayerScript : MonoBehaviour
     // Jump, Dash, and stun situations
     public bool canJump = true;
     private bool canDoubleJump = false;
-    public static int playerFacing = -1;
+    public static int playerFacing = 1;
 
     public GameObject leftprojectilePrefab;
     public GameObject rightprojectilePrefab;
     public Vector3 leftprojectileOffset;
     public Vector3 rightprojectileOffset;
 
-
+    public Animator attackAnimation;
 
     void Start()
     {
-
+        attackAnimation = GetComponent<Animator>();
 
     }
 
@@ -38,14 +38,14 @@ public class PlayerScript : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().AddForce(leftMoveForce);
             playerFacing = -1;
-            transform.localScale = new Vector2(0.3f,0.3f);
+            transform.localScale = new Vector2(-0.3f,0.3f);
         }
 
         if(Input.GetKey(KeyCode.D))
         {
             GetComponent<Rigidbody2D>().AddForce(rightMoveForce);
             playerFacing = 1;
-            transform.localScale = new Vector2(-0.3f,0.3f);
+            transform.localScale = new Vector2(0.3f,0.3f);
         }
 
         if(Input.GetKey(KeyCode.Space))
@@ -65,6 +65,7 @@ public class PlayerScript : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.E))
         {
+            attackAnimation.SetTrigger("Attack");
             if(playerFacing == 1)
             {
                 Instantiate(rightprojectilePrefab,GetComponent<Transform>().position + leftprojectileOffset,Quaternion.identity);

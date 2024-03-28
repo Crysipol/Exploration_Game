@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoxScript : MonoBehaviour
 {
     public GameObject orangePowerUpPrefab;
+    public Animator destroyAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class BoxScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "FireBall")
         {
+            destroyAnimation.SetTrigger("Destroy");
             Destroy(gameObject);
             Instantiate(orangePowerUpPrefab);
         }

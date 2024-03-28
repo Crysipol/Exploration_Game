@@ -32,6 +32,10 @@ public class ProjectileScript : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameaObject.tag == "")
+        if (collision.gameObject.tag == "Box")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
