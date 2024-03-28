@@ -5,6 +5,8 @@
   <ul>
     <li>Enemies tracking the player while following them and shooting projectiles</li>
     <li>Powerups that gives the players different ablities</li>
+    <li>A camera that follows the player</li>
     <li>Animations for characters depending on the actions it does </li>
   </ul>
 </p>
+
