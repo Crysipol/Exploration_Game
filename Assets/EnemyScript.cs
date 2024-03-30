@@ -9,6 +9,9 @@ public class EnemyScript : MonoBehaviour
     public LayerMask targetLayer;
     public LayerMask obstructionLayer;
     public GameObject playerRef;
+    private float distance;
+    public GameObject player;
+    public float speed;
 
     public bool CanSeePlayer {get; private set;}
 
@@ -34,18 +37,31 @@ public class EnemyScript : MonoBehaviour
             Transform target = rangeCheck[0].transform;
             Vector2 directionToTarget = (target.position - transform.position).normalized;
             
-            if(Vector2.Angle(transform.up, directionToTarget) < angle / 2){
+            if(Vector2.Angle(transform.up, directionToTarget) < angle * 0.5){
                 float distanceToTarget = Vector2.Distance(transform.position, target.position);
                 
-                if(Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionLayer))
+                if(Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionLayer)){
                     CanSeePlayer = true;
-                else
+                    Debug.Log("Seen");
+                }
+                else{
                     CanSeePlayer = false;
+                    Debug.Log("E");
+                    distance = Vector2.Distance(transform.position, player.transform.position);
+                    Vector2 direction  = player.transform.position - transform.position;
+
+                    transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+                }
             }
-            else
+            else{
                 CanSeePlayer = false;
+                Debug.Log("A");
+            }
         }
-        else if (CanSeePlayer)
+        else if (CanSeePlayer){
             CanSeePlayer = false;
+            Debug.Log("Sports");
+        }
+
     }
 }
