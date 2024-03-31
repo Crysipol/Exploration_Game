@@ -42,11 +42,9 @@ public class EnemyScript : MonoBehaviour
                 
                 if(Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionLayer)){
                     CanSeePlayer = true;
-                    Debug.Log("Seen");
                 }
                 else{
                     CanSeePlayer = false;
-                    Debug.Log("E");
                     distance = Vector2.Distance(transform.position, player.transform.position);
                     Vector2 direction  = player.transform.position - transform.position;
 
@@ -56,13 +54,16 @@ public class EnemyScript : MonoBehaviour
             }
             else{
                 CanSeePlayer = false;
-                Debug.Log("A");
             }
         }
         else if (CanSeePlayer){
             CanSeePlayer = false;
-            Debug.Log("Sports");
         }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision){
+        if (collision.gameObject.tag == "Player"){
+            Destroy(gameObject);
+        }
     }
 }
