@@ -444,7 +444,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 2.3628159
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1561,7 +1561,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1635,7 +1635,7 @@ Transform:
   m_GameObject: {fileID: 1535929266}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.13, y: 3.58, z: 0}
+  m_LocalPosition: {x: -23.8, y: 3.47, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1653,9 +1653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7adc1e5848db54ab98773ffce0840419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftMoveForce: {x: -0.5, y: 0, z: 0}
-  rightMoveForce: {x: 0.5, y: 0, z: 0}
-  jumpForce: {x: 0, y: 200, z: 0}
+  leftMoveForce: {x: -0.3, y: 0, z: 0}
+  rightMoveForce: {x: 0.3, y: 0, z: 0}
+  jumpForce: {x: 0, y: 250, z: 0}
   playerHealth: 100
   playerDamage: 5
   canJump: 1
@@ -1717,8 +1717,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16173044, y: -0.8355852}
-  m_Size: {x: 0.7934952, y: 3.5428371}
+  m_Offset: {x: -0.08430163, y: -0.9010831}
+  m_Size: {x: 1.6563097, y: 3.6738331}
   m_Direction: 0
 --- !u!1 &1654214815
 GameObject:
@@ -1730,10 +1730,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1654214820}
   - component: {fileID: 1654214819}
+  - component: {fileID: 1654214824}
   - component: {fileID: 1654214818}
   - component: {fileID: 1654214821}
   - component: {fileID: 1654214823}
-  - component: {fileID: 1654214824}
   m_Layer: 0
   m_Name: Thornsbush_Goblin
   m_TagString: Enemy
@@ -1755,7 +1755,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1829,7 +1829,7 @@ Transform:
   m_GameObject: {fileID: 1654214815}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.895, y: 3.05, z: 0}
+  m_LocalPosition: {x: -18.898, y: 3.026, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1879,8 +1879,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &1654214824
-CircleCollider2D:
+--- !u!70 &1654214824
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1911,9 +1911,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.32007217, y: -0.1327622}
-  serializedVersion: 2
-  m_Radius: 3.981434
+  m_Offset: {x: -0.21191597, y: 0.008683205}
+  m_Size: {x: 7.9266167, y: 8.062077}
+  m_Direction: 0
 --- !u!1 &1837455904
 GameObject:
   m_ObjectHideFlags: 0
